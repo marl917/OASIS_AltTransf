@@ -26,6 +26,13 @@ class Ade20kDataset(torch.utils.data.Dataset):
         self.for_metrics = for_metrics
         self.images, self.labels, self.paths = self.list_images()
 
+        if not for_metrics and opt.use_subset:
+            print('LOADING SUBSET: ', self.opt.subset_nb)
+            name_labels = np.load('../subset_ade20k_fewShot.npy', allow_pickle=True)
+            self.labels = list(name_labels[self.opt.subset_nb])
+            self.images = [self.labels[i].replace(".png", ".jpg") for i in
+                           range(len(self.labels))]
+
     def __len__(self,):
         return len(self.images)
 

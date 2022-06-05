@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 from torch.nn import init
 import models.losses as losses
-from augment import AdaptiveAugment, augment
+# from augment import AdaptiveAugment, augment
 from torchvision import transforms, utils
 
 class OASIS_model(nn.Module):
